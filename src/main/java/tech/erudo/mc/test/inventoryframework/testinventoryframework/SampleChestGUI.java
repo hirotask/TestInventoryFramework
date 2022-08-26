@@ -19,14 +19,10 @@ public class SampleChestGUI extends ChestGui {
 
     private int currentPage = 0;
 
-    /**
-     * @param player: GUIを表示するプレイヤー
-     */
-    public SampleChestGUI(Player player) {
+    public SampleChestGUI() {
         super(6, "SampleChestGui");
 
         setup();
-        this.show(player);
     }
 
     /**
