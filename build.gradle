@@ -17,6 +17,14 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven {
+        url = "https://repo.dmulloy2.net/repository/public/"
+    }
+
+    maven {
+        name = "md_5-public"
+        url = "https://repo.md-5.net/content/groups/public/"
+    }
 
 }
 
@@ -29,6 +37,9 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    compileOnly 'dev.jorel:commandapi-annotations:8.5.1'
+    annotationProcessor 'dev.jorel:commandapi-annotations:8.5.1'
 
 }
 
