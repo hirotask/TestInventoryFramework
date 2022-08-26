@@ -58,7 +58,7 @@ public class SampleChestGUI extends ChestGui {
         Pattern pattern = new Pattern(
                 "010020030"
         );
-        PatternPane patternPane = new PatternPane(0, 0, 9, 1, pattern);
+        PatternPane patternPane = new PatternPane(0, 6, 9, 1, pattern);
         patternPane.bindItem('0', new GuiItem(new ItemStack(Material.GRAY_STAINED_GLASS_PANE)));
 
         //ページ移動用のアイテム作成
