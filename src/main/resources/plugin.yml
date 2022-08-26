@@ -1,0 +1,5 @@
+name: TestInventoryFramework
+version: '${version}'
+main: tech.erudo.mc.test.inventoryframework.testinventoryframework.TestInventoryFramework
+api-version: 1.18
+depend: [ InventoryFramework ]
