@@ -8,7 +8,6 @@ import com.github.stefvanschie.inventoryframework.pane.PatternPane;
 import com.github.stefvanschie.inventoryframework.pane.util.Pattern;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -18,9 +17,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class SampleChestGUI extends ChestGui {
 
     private int currentPage = 0;
+    private static final String title = "SampleChestGui";
 
     public SampleChestGUI() {
-        super(6, "SampleChestGui");
+        super(6, title);
 
         setup();
     }
@@ -43,12 +43,17 @@ public class SampleChestGUI extends ChestGui {
             page4.addItem(new GuiItem(new ItemStack(Material.END_STONE)));
         }
 
+
         //PaginatedPaneに各ページのPaneを追加
         PaginatedPane paginatedPane = new PaginatedPane(0, 0, 9, 5);
         paginatedPane.addPane(0, page1);
         paginatedPane.addPane(1, page2);
         paginatedPane.addPane(2, page3);
         paginatedPane.addPane(3, page4);
+
+        paginatedPane.setOnClick(event -> {
+            event.setCancelled(true);
+        });
 
         //ページ移動および閉じるボタンのUI部分をパターンをもとに作成
         Pattern pattern = new Pattern(
@@ -70,7 +75,9 @@ public class SampleChestGUI extends ChestGui {
 
         patternPane.bindItem('1', new GuiItem(left, event -> {
             if(currentPage > 0) {
-                paginatedPane.setPage(currentPage--);
+                currentPage -= 1;
+                paginatedPane.setPage(currentPage);
+                this.setTitle(title + " (" + (currentPage+1) + "ページ目)");
                 this.update();
             }
         }));
@@ -81,10 +88,18 @@ public class SampleChestGUI extends ChestGui {
 
         patternPane.bindItem('3', new GuiItem(right, event -> {
             if(currentPage < 3) {
-                paginatedPane.setPage(currentPage++);
+                currentPage += 1;
+                paginatedPane.setPage(currentPage);
+                this.setTitle(title + " (" + (currentPage+1) + "ページ目)");
                 this.update();
             }
         }));
+
+        patternPane.setOnClick(event -> {
+            event.setCancelled(true);
+        });
+
+        this.setTitle(title + "(" + (currentPage+1) + "ページ目)");
 
         this.addPane(paginatedPane);
         this.addPane(patternPane);
