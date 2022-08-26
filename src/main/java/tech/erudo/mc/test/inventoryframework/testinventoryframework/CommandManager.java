@@ -23,7 +23,7 @@ public class CommandManager {
 
     @Subcommand("gui1")
     public static void gui1(Player player) {
-        SampleChestGUI gui1 = new SampleChestGUI();
+        SimpleChestGUI gui1 = new SimpleChestGUI();
         gui1.show(player);
     }
 

@@ -14,12 +14,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 /**
  * ページの切り替えができるGUI
  */
-public class SampleChestGUI extends ChestGui {
+public class SimpleChestGUI extends ChestGui {
 
     private int currentPage = 0;
     private static final String title = "SampleChestGui";
 
-    public SampleChestGUI() {
+    public SimpleChestGUI() {
         super(6, title);
 
         setup();
